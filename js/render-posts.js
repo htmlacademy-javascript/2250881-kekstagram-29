@@ -1,6 +1,6 @@
 import { createPosts } from "./data.js";
 
-// Отображение фотографий
+// Отображение фотографий.
 const galleryList = document.querySelector(".pictures");
 const galleryTemplate = document
   .querySelector("#picture")
