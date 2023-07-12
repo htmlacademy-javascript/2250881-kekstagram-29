@@ -1,4 +1,5 @@
 import { createPosts } from "./data.js";
+import { openModal } from "./modal.js";
 
 // Отображение фотографий.
 const galleryList = document.querySelector(".pictures");
