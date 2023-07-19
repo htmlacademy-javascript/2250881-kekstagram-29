@@ -55,6 +55,9 @@
             <form
               class="img-upload__form"
               id="upload-select-image"
+              method="post"
+              enctype="multipart/form-data"
+              action="https://29.javascript.pages.academy/kekstagram"
               autocomplete="off"
             >
               <!-- Изначальное состояние поля для загрузки изображения -->
@@ -443,6 +446,9 @@
         </div>
       </section>
     </template>
+    <script src="vendor/pristine/pristine.min.js"></script>
+    <script src="vendor/nouislider/nouislider.js"></script>
+    <script src="js/form.js" type="module"></script>
     <script src="js/main.js" type="module"></script>
   </body>
 </html>
