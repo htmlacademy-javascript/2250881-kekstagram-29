@@ -1,4 +1,6 @@
-import "./render-posts.js";
+import { isEscapeKey } from "./util.js";
+
+const COMMENTS_COUNTER = 5;
 
 const bigPicture = document.querySelector(".big-picture");
 const bigPictureClose = document.querySelector(".big-picture__cancel");
@@ -9,7 +11,6 @@ const modalCommentsList = document.querySelector(".social__comments");
 const modalCaption = document.querySelector(".social__caption");
 const modalCommentsLoader = document.querySelector(".comments-loader");
 const commentList = document.querySelector(".social__comment");
-const COMMENTS_COUNTER = 5;
 
 let showingComments = 0;
 let comments = [];
@@ -27,18 +28,7 @@ const createComment = (comment) => {
   return newComment;
 };
 
-const renderComments = () => {
-  const currentComments = comments.slice(
-    showingComments,
-    showingComments + COMMENTS_COUNTER
-  );
-  showingComments += COMMENTS_COUNTER;
-  showingComments = Math.min(showingComments, comments.length);
-  currentComments.forEach((item) =>
-    modalCommentsList.append(createComment(item))
-  );
-  fillCommentCounter();
-
+const setButtonState = () => {
   if (showingComments >= comments.length) {
     modalCommentsLoader.classList.add("hidden");
     return;
@@ -46,7 +36,23 @@ const renderComments = () => {
   modalCommentsLoader.classList.remove("hidden");
 };
 
-const modalPicture = (dataPost) => {
+const renderComments = () => {
+  const currentComments = comments.slice(
+    showingComments,
+    showingComments + COMMENTS_COUNTER
+  );
+  showingComments = Math.min(
+    showingComments + COMMENTS_COUNTER,
+    comments.length
+  );
+  currentComments.forEach((item) =>
+    modalCommentsList.append(createComment(item))
+  );
+  fillCommentDescription();
+  setButtonState();
+};
+
+const fillPicture = (dataPost) => {
   bigPictureImg.src = dataPost.url;
   modalLikesCounter.textContent = dataPost.likes;
   modalCaption.textContent = dataPost.description;
@@ -93,7 +99,7 @@ const renderModal = (dataPost) => {
   comments = dataPost.comments;
   modalCommentsList.innerHTML = "";
   openModal();
-  modalPicture(dataPost);
+  fillPicture(dataPost);
   renderComments();
 };
 

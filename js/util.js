@@ -6,4 +6,6 @@ const getRandomId = (min, max) =>
 const getRandomArrayElement = (elements) =>
   elements[getRandomId(0, elements.length - 1)];
 
-export { getRandomArrayElement, getRandomId };
+const isEscapeKey = (event) => event.key === "Escape";
+
+export { getRandomArrayElement, getRandomId, isEscapeKey };
