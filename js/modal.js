@@ -15,7 +15,7 @@ const commentList = document.querySelector(".social__comment");
 let showingComments = 0;
 let comments = [];
 
-const fillCommentCounter = () => {
+const fillCommentDescription = () => {
   modalCommentsCounter.innerHTML = `${showingComments} из <span class="comments-count"> ${comments.length}</span> комментариев`;
 };
 
@@ -65,7 +65,6 @@ const closeModal = () => {
   document.addEventListener("keydown", modalEscKeydown);
   bigPictureClose.removeEventListener("click", buttonModalCloseClick);
 
-  comments = [];
   showingComments = 0;
 };
 
