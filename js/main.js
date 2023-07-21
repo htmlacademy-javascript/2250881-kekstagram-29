@@ -1,5 +1,5 @@
-import { renderPosts } from "./render-posts.js";
-import { setAddFormEction } from "./form.js";
+import { getRenderPostsData } from "./render-posts.js";
+import { setFormAction } from "./form.js";
 
-renderPosts();
-setAddFormEction();
+getRenderPostsData();
+setFormAction();
